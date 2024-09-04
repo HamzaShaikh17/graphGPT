@@ -25,9 +25,6 @@ app.add_middleware(
     allow_headers=["*"]
 )
 
-@app.options("/query_response")
-async def options_response():
-    return Response(status_code=204)
 
 load_dotenv()
 
@@ -38,7 +35,6 @@ client = OpenAI(
     api_key = os.getenv("openai_api_key"),
 )
 
-app = FastAPI()
 class RequestData(BaseModel):
     user_query: str
 

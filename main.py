@@ -21,12 +21,13 @@ app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
     allow_credentials=True,
-    allow_methods=["*",'POST'],
-    allow_headers=["*"],
+    allow_methods=["*"],
+    allow_headers=["*"]
 )
 
-
-
+@app.options("/query_response")
+async def options_response():
+    return Response(status_code=204)
 
 load_dotenv()
 
